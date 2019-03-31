@@ -1,0 +1,43 @@
+version: "3"
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: ./local.Dockerfile
+    tty: true
+    command: npm run serve
+    environment:
+      - UV_THREADPOOL_SIZE=2
+      - VUE_APP_API_URL=http://api:3030
+    ports:
+      - 8080:8080
+    volumes:
+      - ./client/src:/app/src
+  api:
+    build: ./api
+    command: npm run serve
+    depends_on:
+      - mongodb
+    ports:
+      - 3030:3030
+      - 9999:9999
+    volumes:
+      - ./api/src:/app/src
+      - ./api/public:/app/public
+      - ./api/config:/app/config
+      - ./api/test:/app/test
+    environment:
+      - NODE_ENV=docker
+  mongodb:
+    image: mongo:3.6.7
+    ports:
+      - 27017:27017
+    volumes:
+       - mongodb-data:/data/db
+  puppeteer:
+    image: zenika/alpine-chrome:68
+    ports:
+      - 9222:9222
+    command: ["--no-sandbox", "--remote-debugging-address=0.0.0.0", "--remote-debugging-port=9222"]
+volumes:
+  mongodb-data:

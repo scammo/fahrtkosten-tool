@@ -1,0 +1,24 @@
+{
+  "name": "fahrtkosten-tool",
+  "version": "1.0.0",
+  "description": "Fahrtkosten Tool",
+  "main": "index.js",
+  "scripts": {
+    "start": "docker-compose build && docker-compose up",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scammo/fahrtkosten-tool.git",
+    "postinstall": "concurrently \"cd api && npm install\" \"cd client && npm install\""
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^3.6.1"
+  },
+  "bugs": {
+    "url": "https://github.com/scammo/fahrtkosten-tool/issues"
+  },
+  "homepage": "https://github.com/scammo/fahrtkosten-tool#readme"
+}

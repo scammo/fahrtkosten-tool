@@ -1,0 +1,51 @@
+{
+  "name": "fahrtkosten-tool-api",
+  "description": "",
+  "homepage": "",
+  "main": "src",
+  "keywords": [
+    "feathers"
+  ],
+  "author": {
+    "name": "Torge Jürgensen",
+    "email": "torge.juergensen@codeanker.de"
+  },
+  "contributors": [],
+  "bugs": {},
+  "directories": {
+    "lib": "src",
+    "test": "test/",
+    "config": "config/"
+  },
+  "engines": {
+    "node": "^10.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "scripts": {
+    "serve": "nodemon -L --inspect=0.0.0.0:9999",
+    "test": "npm run eslint && NODE_ENV= npm run jest",
+    "lint": "eslint src/. test/. --config .eslintrc.json",
+    "lint:fix": "eslint src/. test/. --fix --config .eslintrc.json",
+    "start": "node src/",
+    "jest": "jest"
+  },
+  "dependencies": {
+    "@feathersjs/configuration": "^2.0.6",
+    "@feathersjs/errors": "^3.3.6",
+    "@feathersjs/express": "^1.3.1",
+    "@feathersjs/feathers": "^3.3.1",
+    "@feathersjs/socketio": "^3.2.9",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "helmet": "^3.16.0",
+    "serve-favicon": "^2.5.0",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "jest": "^24.5.0",
+    "nodemon": "^1.18.10",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
+  }
+}
